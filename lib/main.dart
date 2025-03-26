@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newzen/core/configs/theme/app_theme.dart';
 import 'package:newzen/presentation/homepage/bloc/product_listing/product_listing_event.dart';
-import 'package:newzen/presentation/homepage/bloc/product_to_cart/cart_bloc.dart';
+import 'package:newzen/presentation/shopping_cart/bloc/product_to_cart/cart_bloc.dart';
 import 'package:newzen/service/products_service/products_api_service.dart';
 import 'package:newzen/utils/app_routes.dart';
 
