@@ -38,8 +38,10 @@ class CartPage extends StatelessWidget {
                         id: state.cartProducts[index].id));
                   },
                   removeProduct: () {
-                    context.read<CartBloc>().add(
-                        RemoveFromCart(product: state.cartProducts[index]));
+                    print("List Cart: ${state.cartProducts.length}");
+                    context.read<CartBloc>().add(RemoveFromCart(
+                          product: state.cartProducts[index],
+                        ));
                     CustomSnackbar.show(context,
                         message: "Product Removed"); //snackbar
                   },

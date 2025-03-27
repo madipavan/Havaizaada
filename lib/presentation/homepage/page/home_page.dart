@@ -68,12 +68,13 @@ class _HomePageState extends State<HomePage> {
                         newPrice: state.productList[index].newPrice,
                         discount: state.productList[index].discount,
                         onAdding: () {
-                          if (!context
-                              .read<CartBloc>()
-                              .cartProducts
+                          final cartProducts =
+                              context.read<CartBloc>().state.cartProducts;
+                          if (!cartProducts
                               .contains(state.productList[index])) {
-                            context.read<CartBloc>().add(
-                                AddToCart(product: state.productList[index]));
+                            context.read<CartBloc>().add(AddToCart(
+                                product: state.productList[
+                                    index])); //adding prodct to cart
                             CustomSnackbar.show(context,
                                 message: "Product Added"); //snackbar
                           } else {

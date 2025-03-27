@@ -16,11 +16,14 @@ class _OrderSuccessfulPageState extends State<OrderSuccessfulPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Image.network(
-            'https://i.pinimg.com/originals/57/b5/48/57b54818e2011d482548fb54201ce6c1.gif'),
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Image.network(
+              'https://i.pinimg.com/originals/57/b5/48/57b54818e2011d482548fb54201ce6c1.gif'),
+        ),
       ),
     );
   }

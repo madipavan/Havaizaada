@@ -4,7 +4,6 @@ import 'package:newzen/presentation/shopping_cart/bloc/product_to_cart/cart_even
 import 'package:newzen/presentation/shopping_cart/bloc/product_to_cart/cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  final List<ProductModel> cartProducts = [];
   CartBloc() : super(CartState()) {
     on<AddToCart>(_addProductTocart);
     on<IncreaseProductQuantity>(_increaseProductQuantity);
@@ -13,9 +12,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
   //add product to cart
   void _addProductTocart(AddToCart event, Emitter<CartState> emit) {
-    cartProducts.add(event.product);
-
-    emit(state.copyWith(cartProducts: List.from(cartProducts)));
+    final updatedCart = List<ProductModel>.from(state.cartProducts);
+    updatedCart.add(event.product);
+    emit(state.copyWith(cartProducts: updatedCart));
   }
 
   //increase product quantity
@@ -45,8 +44,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   //remove product from cart
   void _removeFromCart(RemoveFromCart event, Emitter<CartState> emit) {
-    List<ProductModel> newList = List.from(state.cartProducts);
-    newList.removeWhere((product) => product.id == event.product.id);
-    emit(state.copyWith(cartProducts: newList));
+    final updatedList = List<ProductModel>.from(state.cartProducts)
+      ..removeWhere((product) => product.id == event.product.id);
+
+    emit(state.copyWith(cartProducts: updatedList));
   }
 }

@@ -16,6 +16,7 @@ class CartState extends Equatable {
       0.0,
       (sum, item) => sum + (item.newPrice * item.quantity),
     );
+    // Calculating the total  updated quantity
     final updatedTotalQuantity = cartProducts.fold(
       0,
       (sum, item) => sum + item.quantity,
